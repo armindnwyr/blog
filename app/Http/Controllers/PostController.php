@@ -35,6 +35,7 @@ class PostController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'slug' => 'required|unique:posts',
             'category_id' => 'required',
         ]);
 
@@ -61,7 +62,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post','categories'));
     }
 
     /**
@@ -69,7 +71,25 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'slug' => 'required|unique:posts,slug,'.$post->id,
+            'category_id' => 'required',
+            'summary' => 'required',
+            'description' => 'required',
+        ]);
+
+        $post->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'summary' => $request->summary,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+            'user_id' => auth()->user()->id,
+        ]);
+
+        return Redirect::route('admin.posts.index'); 
+
     }
 
     /**

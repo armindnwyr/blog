@@ -41,4 +41,5 @@
     <div class="mt-6">
         {{ $post->links() }}
     </div>
+
 </x-admin-layout>
