@@ -21,12 +21,13 @@ class PostFactory extends Factory
         return [
             'name' => $name,
             'slug' => Str::slug($name),
+            'summary'=>$this->faker->text(300),
             'description' => $this->faker->paragraph(5,true),
-            'url' => $this->faker->url(),
+            // 'url' => $this->faker->url(),
             'image' => $this->faker->imageUrl(640,480),
-            'publish' => true,
-            'user_id' =>1,
-            'update_at' => now(),        
+            // 'publish' => true,
+            'user_id' =>$this->faker->numberBetween(1,5),
+            // 'update_at' => now(),        
         ];
     }
 }

@@ -12,7 +12,7 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
         //
     }
@@ -20,7 +20,7 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function create()
     {
         //
     }
@@ -28,7 +28,7 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         //
     }
@@ -36,7 +36,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category): Response
+    public function show(Category $category)
     {
         //
     }
@@ -44,7 +44,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category): Response
+    public function edit(Category $category)
     {
         //
     }
@@ -52,7 +52,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category): RedirectResponse
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -60,7 +60,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category): RedirectResponse
+    public function destroy(Category $category)
     {
         //
     }

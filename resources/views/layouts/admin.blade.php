@@ -31,6 +31,12 @@
                 'active' => request()->routeIs('admin.dashboard'),
                 'icon' => 'fa-solid fa-gauge'
             ],
+            [
+                'title' => 'Publicaciones',
+                'url' => route('admin.posts.index'),
+                'active' => request()->routeIs('admin.posts.*'),
+                'icon' => 'fa-solid fa-globe'
+            ],
         ];
     @endphp
     <div class="flex" x-data="{ 
