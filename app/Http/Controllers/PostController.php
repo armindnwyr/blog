@@ -79,10 +79,12 @@ class PostController extends Controller
             'name' => 'required',
             'slug' => 'required|unique:posts,slug,'.$post->id,
             'category_id' => 'required',
-            'summary' => 'required',
-            'description' => 'required',
+            'summary' => $request->get('publish') ? 'required' : 'nullable',
+            'description' => $request->get('publish') ? 'required' : 'nullable',
+            'publish' => 'required',
         ]);
 
+        // return $request->all();
         $post->update([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
@@ -90,7 +92,12 @@ class PostController extends Controller
             'description' => $request->description,
             'category_id' => $request->category_id,
             'user_id' => auth()->user()->id,
+            'publish' => $request->publish,
         ]);
+
+        if($post->publish && is_null($post->update_at)){
+            $post->update(['update_at' => now()]);
+        }
 
         $post->tags()->sync($request->tags);
 
