@@ -33,10 +33,18 @@
                 'active' => request()->routeIs('admin.dashboard'),
                 'icon' => 'fa-solid fa-gauge'
             ],
+
             [
                 'title' => 'Publicaciones',
                 'url' => route('admin.posts.index'),
                 'active' => request()->routeIs('admin.posts.*'),
+                'icon' => 'fa-solid fa-globe'
+            ],
+
+            [
+                'title' => 'Categorias',
+                'url' => route('admin.categories.index'),
+                'active' => request()->routeIs('admin.categories.*'),
                 'icon' => 'fa-solid fa-globe'
             ],
         ];

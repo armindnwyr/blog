@@ -90,14 +90,14 @@ class PostController extends Controller
         
         if($request->hasFile('image')){
             $img_rp = str_replace('storage', 'public', $post->image); //buscar image almacenada
+            Storage::delete($img_rp);
             
-            // $fileName = Str::slug($request->name).'.'.$request->image->extension();
+            $fileName = Str::slug($request->name).'.'.$request->image->extension();
             // $img_url = Storage::putFileAs(Storage::url('public/imagen'), $request->file('image'), $fileName);
             // $img_url2 = Storage::url($img_url);
-            $imag = $request->file('image')->store('public/imagen');
+            $imag = $request->file('image')->storeAs('public/imagen', $fileName);
             $img_url = Storage::url($imag);
             
-            Storage::delete($img_rp);
             $post->image = $img_url;
             
             $post->save();
