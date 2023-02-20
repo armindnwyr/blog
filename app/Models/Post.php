@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Storage;
+
+use function PHPUnit\Framework\returnSelf;
+
 class Post extends Model
 {
     use HasFactory;
@@ -26,7 +30,25 @@ class Post extends Model
     {
         return new Attribute(
             get: function(){
-                return $this->image ?? asset('image/replace.jpg');
+                
+                $searc = public_path().$this->image;
+                // return $this->image ?? asset('image/replace.jpg');
+                //  dd($searc, 'public'.$this->image);
+                // dd($searc);
+                if(@getimagesize($searc))
+                    return $this->image;
+                else
+                    return  asset('image/replace.jpg');
+                
+                // if ('https://via.placeholder.com/'.$this->image)
+                //     return $this->image;
+                    
+                //     return asset('image/replace.jpg');
+                // else
+                
+                // else
+                //     return asset('image/replace.jpg');
+                    // return $this->image ?? asset('image/replace.jpg');
             }
         );
     }

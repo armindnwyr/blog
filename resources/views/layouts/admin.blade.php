@@ -64,7 +64,7 @@
             @include('layouts.partiels.admin.siderbar')
 
         </div>
-        <div class="flex-1">
+        <div class="w-full">
 
             @include('layouts.partiels.admin.navigation')
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

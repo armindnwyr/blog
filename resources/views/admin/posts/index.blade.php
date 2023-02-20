@@ -25,7 +25,7 @@
                 <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-600 text-white rounded">Sin Publicar</span>
                 @endif
 
-                <p class="text-gray-500 mt-2">
+                <p class="text-gray-500 mt-2 text-justify">
                     {{ Str::limit($item->summary, 300)}}
                 </p>
 

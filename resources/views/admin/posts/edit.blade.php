@@ -15,7 +15,7 @@
                 <label class="flex items-center px-4 py-2 bg-white rounded-lg">
                     <i class="fa-solid fa-camera mr-3"></i>
                     Actualizar imagen
-                    <input type="file" class="hidden" accept="image/*" onchange="previewImage(event, '#imgPreview')">
+                    <input name="image" type="file" class="hidden" accept="image/*" onchange="previewImage(event, '#imgPreview')">
                 </label>
             </div>
         </div>
@@ -57,7 +57,7 @@
                 <x-label>Etiquetas</x-label>
                 <select
                     class="js-example-basic-multiple border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full"
-                    name="tags[]" multiple="multiple">
+                    name="tags[]" multiple="multiple" style="width: 100%">
                     {{-- @foreach ($tags as $item)
                         <option value="{{ $item->id }}" @selected($post->tags->contains($item->id))>{{ $item->name }}</option>
                     @endforeach --}}
@@ -86,12 +86,22 @@
             </div>
             {{-- button update   --}}
             <div class="flex justify-end">
+                <x-danger-button class="mr-2" type="button" onclick="deletePost()">
+                    Delete
+                </x-danger-button>
+
                 <x-button>
                     Update
                 </x-button>
             </div>
 
         </div>
+    </form>
+
+    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post" id="delete">
+        @csrf
+        @method('delete')
+
     </form>
     @push('js')
         <script src="https://code.jquery.com/jquery-3.6.3.min.js"
@@ -164,6 +174,11 @@
                 //Modificamos el atributo src de la etiqueta img
                 $imgPreview.src = objectURL;
 
+            }
+
+            function deletePost(){
+                form = document.querySelector('form#delete');
+                form.submit();
             }
         </script>
     @endpush
