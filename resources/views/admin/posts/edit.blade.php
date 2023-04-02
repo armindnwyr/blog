@@ -7,7 +7,7 @@
         @method('put')
         <div class="mb-6 relative">
             <figure>
-                <img id="imgPreview" src="{{ $post->imageReplace }}"
+                <img id="imgPreview" src="{{ $post->imageThum() }}"
                     class="aspect-[16/9] w-full object-cover object-center rounded-lg">
             </figure>
 

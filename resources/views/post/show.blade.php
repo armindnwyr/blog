@@ -15,7 +15,7 @@
             {{ $post->update_at->format('d M Y') }} - {{ $post->user->name }}
         </p>
         <figure class="mb-6">
-            <img src="{{ $post->imageReplace }}" alt="" class="w-full aspect-[16/9] object-cover object-center">
+            <img src="{{ $post->imageThum() }}" alt="" class="w-full aspect-[16/9] object-cover object-center">
         </figure>
         <div class="text-gray-800">
             {!! $post->description !!}

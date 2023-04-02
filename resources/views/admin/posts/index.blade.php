@@ -11,7 +11,7 @@
     
             <figure>
                 <a href="{{ route('admin.posts.edit', $item) }}">
-                    <img class="aspect-[16/9] object-cover object-center w-full" src="{{ $item->imageReplace }}" alt="{{ $item->name }}"> 
+                    <img class="aspect-[16/9] object-cover object-center w-full" src="{{ $item->imageThum() }}" alt="{{ $item->name }}"> 
                 </a>  
             </figure>
     

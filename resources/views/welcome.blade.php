@@ -12,7 +12,7 @@
             @foreach ($post as $posts)
         <article class="grid grid-cols-1 md:grid-cols-2  gap-6">
             <figure>
-                <img src="{{ $posts->imageReplace }}" alt="" srcset="" class="object-cover object-center rounded-lg">
+                <img src="{{ $posts->imageThum() }}" alt="" srcset="" class="object-cover object-center rounded-lg">
             </figure>
             <div>
                 <h1 class="text-xl font-semibold">{{ $posts->name }}</h1>
