@@ -14,8 +14,10 @@ class WelcomeController extends Controller
         $post = Post::where('publish', true)
         ->when(request('category'), function($query){
             $query->whereIn('category_id', request('category'));
+        })->when(request('order') ?? 'new', function($query, $order){
+            $sort = $order == 'new' ? 'desc' : 'asc';
+            $query->orderBy('update_at',$sort);
         })
-        ->orderBy('update_at','desc')
         ->orderBy('id', 'desc')
         ->paginate(10);
 
